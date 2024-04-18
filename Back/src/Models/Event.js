@@ -7,7 +7,7 @@ class Evenement {
     listParticipant,
     maxParticipant,
     userId,
-    gdpr,
+    date,
     status
   ) {
     this.title = title;
@@ -17,7 +17,7 @@ class Evenement {
     this.listParticipant = listParticipant;
     this.maxParticipant = maxParticipant;
     this.userId = userId;
-    this.gdpr = gdpr;
+    this.date = date;
     this.status = status;
   }
 }

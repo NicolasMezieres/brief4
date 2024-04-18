@@ -9,8 +9,11 @@
   <body>
     <header>
       <nav class="w-full flex bg-sky-700 justify-between py-5 px-20 sticky">
-        <h1 class="logo px-4 py-1">paranormal activities</h1>
+        <h1 class="logo px-4 py-1">logo</h1>
         <button class="navbar-burger"></button>
+        <a href="#" class="myEvents bg-orange-400 rounded-xl px-4 py-1"
+          >mes évenements</a
+        >
         <a
           href="../event/index.html"
           class="bg-orange-400 rounded-xl px-4 py-1"
@@ -31,18 +34,33 @@
       </nav>
     </header>
     <main>
-      <div class="events">
-        <div class="event">
-          <h2 class="event-title">Mon titre d'evenement</h2>
+      <div class="events grid grid-cols-4 gap-y-5 bg-gray-500 py-4">
+        <div
+          class="event bg-orange-500 w-2/3 mx-auto flex flex-col items-center rounded-xl"
+        >
+          <h2 class="event-title my-2">Mon titre d'evenement</h2>
           <img
+            class="w-11/12 rounded-xl"
             src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVzcGFjZXxlbnwwfHwwfHx8MA%3D%3D"
           />
-          <p class="event-description">Ma description</p>
-          <p class="event-maxParticipant"></p>
+          <p class="event-description h-32 overflow-auto text-center py-1">
+            Ma description Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Ut placeat assumenda fuga fugit voluptas velit vel inventore
+            consectetur, illum esse quos aliquid quidem reiciendis, id sed
+            deleniti odit molestiae soluta!
+          </p>
+          <p class="event-maxParticipant py-1">1/50</p>
+          <p class="event-location py-1">Lieu :</p>
+          <p class="event-date pt-1 pb-3">le: à :</p>
+          <button class="btn-join bg-orange-200 rounded-3xl px-4 py-2 mb-4">
+            Rejoindre l'évenement
+          </button>
         </div>
       </div>
     </main>
-    <footer>Copyright - 2024</footer>
+    <footer class="w-full bg-sky-700">
+      <p class="w-full text-center">Copyright - 2024</p>
+    </footer>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script/script.js"></script>
   </body>

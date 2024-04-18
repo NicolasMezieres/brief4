@@ -3,6 +3,7 @@ const client = require("../Services/Connexion");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+
 async function register(req, res) {
   if (
     !req.body.firstName ||
@@ -42,6 +43,7 @@ async function register(req, res) {
       process.env.SECRET_KEY,
       { expiresIn: "1h" }
     );
+
     res.status(200).json({ jwt: token });
   } catch (e) {
     console.log(e);
@@ -66,7 +68,7 @@ async function login(req, res) {
       user.password
     );
     if (!comparePassword) {
-      res.status(401).json({ error: "Email or password invalid" });
+      return res.status(401).json({ error: "Email or password invalid" });
     }
     const token = jwt.sign(
       {

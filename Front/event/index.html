@@ -8,21 +8,66 @@
   </head>
   <body>
     <header>
-      <nav class="">
-        <h1 class="logo">Logo</h1>
-        <nav class="">
-          <a class="accueil" href="../Acceuil/index.html">
-            Retour à l'accueil
-          </a>
-        </nav>
+      <nav class="w-full flex bg-sky-700 justify-between py-2 px-20 sticky">
+        <h1 class="logo px-4 py-1">logo</h1>
+        <a
+          class="accueil bg-gray-300 px-4 py-2 rounded-3xl duration-500 hover:bg-red-500 active:rounded-md active:bg-black active:text-white"
+          href="../Acceuil/index.html"
+        >
+          Retour à l'accueil
+        </a>
       </nav>
     </header>
-    <main>
-      <div class="events">
-        <img class="" />
-      </div>
+    <main
+      class="bg-gray-300 h-screen flex flex-col justify-center items-center"
+    >
+      <form
+        class="event w-1/3 flex flex-col justify-center items-center bg-green-500 py-4 rounded-3xl"
+      >
+        <label for="title" class="pb-2">Titre</label>
+        <input
+          id="title"
+          class="w-3/5 mb-6 rounded-3xl text-center"
+          type="text"
+        />
+        <label for="image">URL d'une Image</label>
+        <span class="errorImage text-red-600"></span>
+        <input
+          id="image"
+          class="w-4/5 mb-6 rounded-3xl text-center"
+          type="url"
+        />
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          class="w-4/5 mb-6 rounded-3xl text-center"
+          type="text"
+        >
+        </textarea>
+        <label for="maxParticipant">Nombre de participants</label>
+        <input
+          id="maxParticipant"
+          class="w-1/12 text-center mb-6"
+          min="2"
+          value="2"
+          max="99"
+          type="number"
+        />
+        <label for="date">Aura lieu le</label>
+        <span class="errorDate text-red-600"></span>
+        <input id="date" class="w-1/10 mb-6" type="datetime-local" />
+        <span class="errorText text-red-600"></span>
+        <button
+          class="bg-red-500 px-8 py-2 rounded-3xl border-2 border-red-500 duration-500 hover:border-black active:bg-black active:text-white mb-4"
+          onclick="essaie(event)"
+        >
+          Créer une annonce!
+        </button>
+      </form>
     </main>
-    <footer>Copyright - 2024</footer>
+    <footer class="w-full bg-sky-700">
+      <p class="w-full text-center">Copyright - 2024</p>
+    </footer>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script/script.js"></script>
   </body>

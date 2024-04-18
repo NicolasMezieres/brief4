@@ -18,6 +18,7 @@ connect(process.env.DB_URL, (error) => {
     console.log("connected");
   }
 });
+
 app.use("/event", eventRoute);
 app.use("/user", userRoute);
 app.listen(port);

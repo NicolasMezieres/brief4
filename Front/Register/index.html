@@ -6,24 +6,88 @@
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css" />
   </head>
-  <body>
+  <body class="h-screen">
     <header>
-      <nav class="">
-        <h1 class="logo">Logo</h1>
-        <nav class="">
-          <h1 class="logo" href="../Acceuil/index.html">Logo</h1>
-          <button class="accueil" href="../Acceuil/index.html">
-            Retour à l'accueil
-          </button>
-        </nav>
+      <nav class="w-full flex bg-sky-700 justify-between py-2 px-20 sticky">
+        <h1 class="logo px-4 py-1">logo</h1>
+        <a
+          class="accueil bg-gray-300 px-4 py-2 rounded-3xl duration-500 hover:bg-red-500 active:rounded-md active:bg-black active:text-white"
+          href="../Acceuil/index.html"
+        >
+          Retour à l'accueil
+        </a>
       </nav>
     </header>
-    <main>
-      <div class="events">
-        <img class="" />
+    <main class="h-full">
+      <div class="h-full bg-gray-500 flex justify-center items-center">
+        <form
+          class="w-1/4 register bg-emerald-200 flex flex-col justify-center items-center rounded-3xl my-4 p-2"
+        >
+          <label for="firstName">Prénom</label>
+          <span class="firstNameTexteError text-red-600"></span>
+          <input
+            id="firstName"
+            class="w-3/5 mb-4 text-center"
+            placeholder="Ecrire votre prénom..."
+            type="text"
+          />
+          <label for="lastName">Nom</label>
+          <span class="lastNameTexteError text-red-600"></span>
+          <input
+            id="lastName"
+            class="w-3/5 mb-4 text-center"
+            placeholder="Ecrire votre nom..."
+            type="text"
+          />
+          <label for="email">Email</label>
+          <span class="emailTexteError text-red-600"></span>
+          <input
+            id="email"
+            class="w-4/5 mb-4 text-center"
+            placeholder="Confirmer votre mot de email..."
+            type="email"
+          />
+          <label for="password">Mot de passe</label>
+          <span class="passwordTexteError text-red-600"></span>
+          <input
+            id="password"
+            class="w-4/5 mb-4 text-center"
+            placeholder="Ecrire votre mot de passe..."
+            type="password"
+          />
+          <label for="confirmPassword">Confirmer le Mot de passe</label>
+          <span class="confirmPasswordTexteError text-red-600"></span>
+          <input
+            id="confirmPassword"
+            class="w-4/5 mb-4 text-center"
+            placeholder="Confirmer votre mot de passe..."
+            type="password"
+          />
+          <div class="checkbox mb-4">
+            <input id="acceptTermes" type="checkbox" />
+            <label for="acceptTermes" class="text-center select-none"
+              >Acceptez les Termes & Conditions</label
+            >
+            <span class="checkboxTexteError text-red-600 block"></span>
+          </div>
+          <button
+            class="submit bg-red-500 rounded-3xl px-8 py-2 mb-4 border border-red-500 duration-500 hover:border-black hover:py-2 active:bg-black active:text-white"
+            onclick="envoie()"
+          >
+            Envoyer
+          </button>
+          <h2 class="mb-2">Déja inscrit ?</h2>
+          <a
+            href="../Login/index.html"
+            class="underline decoration-zinc-500 hover:text-white duration-700 mb-4"
+            >Se connecter</a
+          >
+        </form>
       </div>
     </main>
-    <footer>Copyright - 2024</footer>
+    <footer class="w-full bg-sky-700">
+      <p class="w-full text-center">Copyright - 2024</p>
+    </footer>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script/script.js"></script>
   </body>

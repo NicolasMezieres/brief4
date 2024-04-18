@@ -1,17 +1,16 @@
 const jwt = require("jsonwebtoken");
 const client = require("../Services/Connexion");
+const { ObjectId } = require("bson");
 require("dotenv").config();
 
 async function verifyToken(req, res, next) {
   //On vérifie si le headers authorization est remplie afin d'éviter le crash
   let headers = req.headers.authorization;
   if (!headers) {
-    console.log(headers);
-    return res.status(400).json({ error: "Unauthorized test" });
+    return res.status(401).json({ error: "Unauthorized" });
   }
   //on enleve le début du headers Authorization pour prendre que la clé
   let token = req.headers.authorization.replace("Bearer ", "");
-
   //si il n'y à pas de clef
   if (!token) {
     return res.status(401).json({ error: "Unauthorized" });
@@ -23,13 +22,16 @@ async function verifyToken(req, res, next) {
         return res.status(401).json({ error: "Unauthorized" });
       } else {
         req.body.token = authData;
+        let userId = new ObjectId(req.body.token.id);
         let verifyId = await client
           .db("BF4")
           .collection("user")
-          .find({ _id: req.body.token._id });
+          .findOne({ _id: userId });
         if (!verifyId) {
           return res.status(401).json({ error: "Unauthorized" });
         }
+        req.body.token = verifyId;
+        req.body.role = verifyId.role;
         next();
       }
     });
