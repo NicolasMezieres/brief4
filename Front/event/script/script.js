@@ -45,8 +45,6 @@ async function essaie(event) {
   };
   let creatEvent = await fetch("http://localhost:3000/event/create", request);
   let errorMsg = await creatEvent.json();
-  console.log(errorMsg);
-  console.log(await creatEvent);
   if (creatEvent.status === 200) {
     window.location.href = "../Acceuil/index.html";
   } else if (creatEvent.status === 401) {

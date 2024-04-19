@@ -55,7 +55,6 @@ async function getAllEvent(req, res) {
 
 async function getMyEvent(req, res) {
   try {
-    console.log(req.body.token._id);
     let foundEvent = await client
       .db("BF4")
       .collection("event")
@@ -69,15 +68,15 @@ async function getMyEvent(req, res) {
       let infoEvent = {
         _id: element._id,
         title: element.title,
+        image: element.image,
         description: element.description,
-        listParticipant: element.listParticipant,
+        listParticipant: element.listParticipant.length,
         maxParticipant: element.maxParticipant,
         date: element.date,
         gdpr: element.gdpr,
       };
       returnResultFoundEvent.push(infoEvent);
     });
-    console.log(returnResultFoundEvent);
     res.status(200).json(returnResultFoundEvent);
   } catch (e) {
     console.log(e);
@@ -97,8 +96,7 @@ async function patchEvent(req, res) {
     if (!foundEvent) {
       return res.status(404).json({ error: "not found" });
     }
-
-    if (foundEvent.userId === req.body.token) {
+    if (String(foundEvent.userId) === String(req.body.token._id)) {
       myEvent = {
         ...foundEvent,
         ...req.body,
@@ -179,7 +177,10 @@ async function deleteEvent(req, res) {
     if (!foundEvent) {
       return res.status(400).json({ error: "not found" });
     }
-    if (foundEvent.userId === req.body.token.id || req.body.role === "admin") {
+    if (
+      String(foundEvent.userId) === String(req.body.token._id) ||
+      req.body.role === "admin"
+    ) {
       let deleteEvent = await client
         .db("BF4")
         .collection("event")
