@@ -160,7 +160,6 @@ async function deleteEvent(element, i) {
   let eventDelete = await fetch("http://localhost:3000/event/delete", request);
   let result = await eventDelete;
   if (result.status == 200) {
-    console.log("Suppression réussie");
     myEvent.remove();
   }
   // unauthorized
@@ -178,7 +177,6 @@ async function deleteEvent(element, i) {
 
 async function modalEvent(id, date, listParticipant, maxParticipant, i) {
   date = date.replace("-T", "T");
-  console.log(listParticipant);
   let event = document.querySelector(`.myEvent${i}`);
   let title = document.querySelector(`.myEvent${i} .event .event-title`);
   let image = document.querySelector(`.myEvent${i} .event img`);
@@ -215,7 +213,6 @@ async function modalEvent(id, date, listParticipant, maxParticipant, i) {
     removeModal(overlay, modal);
   });
   let verifyInputNumber = document.querySelector("#maxParticipant");
-  console.log(verifyInputNumber);
   verifyInputNumber.addEventListener("input", () => {
     inputNumber(verifyInputNumber, listParticipant, 99);
   });
