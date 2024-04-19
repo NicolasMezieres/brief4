@@ -261,7 +261,7 @@ async function modifyEvent(eventId, i) {
   };
   let updateEvent = await fetch("http://localhost:3000/event/patch", request);
   let response = updateEvent;
-  if (response.status === 200 || updateEvent.json() === "Nothing to modify") {
+  if (response.status === 200) {
     //on retire la modal et l'overlay
     removeModal(overlay, modal);
     //on modifie l'affichage des evenements
@@ -290,18 +290,23 @@ async function modifyEvent(eventId, i) {
     let hoursEvent = document.querySelector(`.event${i} .hours`);
     hoursEvent.innerText = date[1];
     hoursMyEvent.innerText = date[1];
-  } else if (response.status === 400) {
-    let error = await updateEvent.json();
-    modalError.style.backgroundColor = "black";
-    if (error.error === "please send a URL") {
-      modalError.innerText = "Veuillez rentrer un URL Valide !";
-    } else if (error.error === "please send a Date") {
-      modalError.innerText = "Veuillez remplire correctement la date";
-    }
-  } else if (response.status === 401) {
-    window.localStorage.removeItem("token");
-    window.location.href = "../Login/index.html";
   } else {
-    window.location.reload();
+    let error = await updateEvent.json();
+    if (error.error == "Nothing to modify" && response.status === 400) {
+      removeModal(overlay, modal);
+    } else if (response.status === 400) {
+      error = await updateEvent.json();
+      modalError.style.backgroundColor = "black";
+      if (error.error === "please send a URL") {
+        modalError.innerText = "Veuillez rentrer un URL Valide !";
+      } else if (error.error === "please send a Date") {
+        modalError.innerText = "Veuillez remplire correctement la date";
+      }
+    } else if (response.status === 401) {
+      window.localStorage.removeItem("token");
+      window.location.href = "../Login/index.html";
+    } else {
+      window.location.reload();
+    }
   }
 }
